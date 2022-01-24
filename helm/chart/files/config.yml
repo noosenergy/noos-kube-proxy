@@ -11,7 +11,9 @@ providers:
   file:
     filename: "/etc/traefik/rules.yml"
     watch: true
-  kubernetesCRD: {}
+  kubernetesCRD:
+    # Allow middlewares to be accessed between namespaces
+    allowCrossNamespace: true
   kubernetesIngress:
     ingressClass: {{ .Values.controller.ingressClassName }}
     ingressEndpoint:
