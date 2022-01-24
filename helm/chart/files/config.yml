@@ -1,0 +1,46 @@
+# Traefik static configuration
+# https://doc.traefik.io/traefik/
+
+log:
+  level: WARNING
+
+accessLog: {}
+
+# Provider type
+providers:
+  file:
+    filename: "/etc/traefik/rules.yml"
+    watch: true
+  kubernetesCRD: {}
+  kubernetesIngress:
+    ingressClass: {{ .Values.controller.ingressClassName }}
+    ingressEndpoint:
+      # Should match `traefik` service name
+      # (required by `external-dns` to auto-discover ingresses)
+      publishedService: "{{ .Release.Namespace }}/controller"
+
+# Tcp/Udp entrypoints
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      middlewares:
+        # Add custom headers to any requests/responses
+        - gateway-header@file
+  webredirect:
+    address: ":2443"
+    http:
+      redirections:
+        entryPoint:
+          to: ":443"
+          scheme: "https"
+          permanent: true
+
+# Api entrypoint
+api:
+  dashboard: true
+  insecure: true
+  debug: false
+
+# Ping entrypoint
+ping: {}
