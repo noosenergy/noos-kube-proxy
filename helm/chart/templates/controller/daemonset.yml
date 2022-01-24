@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: traefik-controller
+  namespace: {{ .Release.Namespace }}
+spec:
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: traefik-lb
+  template:
+    metadata:
+      labels:
+        app: traefik-lb
+      annotations:
+        strategyTrigger: {{ randAlphaNum 5 | quote }}
+    spec:
+      terminationGracePeriodSeconds: 30
+      {{- if .Values.controller.priorityClassName }}
+      priorityClassName: {{ .Values.controller.priorityClassName }}
+      {{- end }}
+      {{- if .Values.rbac.enabled }}
+      serviceAccountName: traefik-controller
+      {{- end }}
+
+      volumes:
+        - name: config-volume
+          configMap:
+            name: traefik-config
+
+      containers:
+        - name: controller
+          image: "{{ .Values.controller.image.repository }}:{{ .Values.controller.image.tag }}"
+          imagePullPolicy: {{ .Values.controller.image.pullPolicy }}
+          args:
+            - "--configfile=/etc/traefik/config.yml"
+          ports:
+            - name: http
+              containerPort: 80
+            - name: tohttps
+              containerPort: 2443
+            - name: api
+              containerPort: 8080
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/traefik
+          {{- if .Values.controller.resources }}
+          resources: {{ toYaml .Values.controller.resources | nindent 12 }}
+          {{- end }}
+          readinessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+            httpGet:
+              path: /ping
+              port: 8080
+              httpHeaders:
+                - name: Host
+                  value: localhost

@@ -1,0 +1,19 @@
+# To point shell to minikube's docker-daemon:
+# `eval $(minikube docker-env)`
+# To revert:
+# `eval $(minikube docker-env --unset)`
+
+rbac:
+  enabled: false
+
+controller:
+  priorityClassName: system-cluster-critical
+  ingressClassName: traefik
+  image:
+    repository: traefik
+    tag: "v2.5.6"
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 1m
+      memory: 1Mi

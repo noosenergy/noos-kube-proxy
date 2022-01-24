@@ -1,0 +1,16 @@
+# Traefik dynamic configuration
+
+http:
+  middlewares:
+    gateway-header:
+      headers:
+        # Enforce TLS for incoming requests (as terminated after AWS ELB)
+        customRequestHeaders:
+          X-Forwarded-Scheme: "https"
+        # Enforce security headers for outgoing responses
+        # (https://observatory.mozilla.org/)
+        browserXssFilter: true
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        stsSeconds: 3600
+        stsIncludeSubdomains: true

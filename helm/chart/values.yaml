@@ -1,0 +1,13 @@
+rbac:
+  enabled: true
+
+controller:
+  priorityClassName:
+  ingressClassName: traefik
+  image:
+    repository: traefik
+    tag: "v2.5.6"
+    pullPolicy: Always
+  service:
+    annotations: {}
+  resources: {}
