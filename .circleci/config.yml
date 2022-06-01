@@ -44,10 +44,15 @@ workflows:
   lint-build-deploy:
     jobs:
       - lint-chart
+      - hold:
+          type: approval
+          filters:
+            branches:
+              only: master
       - build-chart:
           context: CIRCLECI_SHARED
           requires:
-            - lint-chart
+            - hold
           filters:
             branches:
               only: master
