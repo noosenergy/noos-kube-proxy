@@ -1,7 +1,9 @@
 [![CircleCI](https://circleci.com/gh/noosenergy/neptune-kube-proxy.svg?style=svg&circle-token=798a263cee229742a5a286732ff613c17d16e175)](https://circleci.com/gh/noosenergy/neptune-kube-proxy)
 
 # Neptune Kube Proxy
-Neptune reverse proxy boilerplate.
+Reverse proxy boilerplate for the Neptune platform.
+
+This project regroups quite a few ideas gathered along blogs, threads, repositories and other documentations. To give back to the community, Noos Energy open-sourced the deployment of such a service to help other developpers to jump-start building their cloud-native infrastructure.
 
 ## Quickstart
 
@@ -17,5 +19,12 @@ The development workflows of this project can be managed by [noos-invoke](https:
 
 ```
 $ noosinv
-Usage: noosinv [--core-opts] <subcommand> [--subcommand-opts] ...
+Usage: noosinv [--core-opts] <subcommand> [--subcommand-opts]
+
+...
+
+Subcommands:
+  helm.lint          Check compliance of Helm charts / values.
+  helm.test          Test local deployment in Minikube.
+  local.dotenv       Create local dotenv file.
 ```
