@@ -17,19 +17,19 @@ rules:
   - apiGroups: ["extensions", "networking.k8s.io"]
     resources: ["ingresses", "ingressclasses"]
     verbs: ["get", "list", "watch"]
-  - apiGroups: ["extensions"]
+  - apiGroups: ["extensions", "networking.k8s.io"]
     resources: ["ingresses/status"]
     verbs: ["update"]
   - apiGroups: ["traefik.containo.us"]
     resources:
-      - middlewares
-      - middlewaretcps
       - ingressroutes
-      - traefikservices
       - ingressroutetcps
       - ingressrouteudps
+      - middlewares
+      - middlewaretcps
       - tlsoptions
       - tlsstores
+      - traefikservices
       - serverstransports
     verbs: ["get", "list", "watch"]
 ---

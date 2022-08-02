@@ -1,3 +1,5 @@
+# Inspired by
+# https://github.com/traefik/traefik-helm-chart/tree/master/traefik
 rbac:
   enabled: true
 
