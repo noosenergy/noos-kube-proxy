@@ -1,5 +1,10 @@
-# Inspired by
-# https://github.com/traefik/traefik-helm-chart/tree/master/traefik
+# v2.6 resources:
+#     - Traefik config
+#     https://doc.traefik.io/traefik/v2.6/
+#     - Helm chart
+#     https://github.com/traefik/traefik-helm-chart/tree/master/traefik
+#     - CRDs / ingresses
+#     https://github.com/traefik/traefik/tree/v2.6/pkg/provider/kubernetes/ingress/fixtures
 rbac:
   enabled: true
 
