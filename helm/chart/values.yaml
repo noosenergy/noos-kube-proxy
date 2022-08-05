@@ -1,6 +1,6 @@
-# v2.6 resources:
+# v2.8 resources:
 #     - Traefik config
-#     https://doc.traefik.io/traefik/v2.6/
+#     https://doc.traefik.io/traefik/v2.8/
 #     - Helm chart
 #     https://github.com/traefik/traefik-helm-chart/tree/master/traefik
 #     - CRDs / ingresses
@@ -11,9 +11,10 @@ rbac:
 controller:
   priorityClassName:
   ingressClassName: traefik
+  isDefaultIngressClass: true
   image:
     repository: traefik
-    tag: "v2.6"
+    tag: "v2.8"
     pullPolicy: Always
   service:
     annotations: {}
