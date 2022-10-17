@@ -1,7 +1,7 @@
-[![CircleCI](https://circleci.com/gh/noosenergy/neptune-kube-proxy.svg?style=svg&circle-token=798a263cee229742a5a286732ff613c17d16e175)](https://circleci.com/gh/noosenergy/neptune-kube-proxy)
+[![CircleCI](https://circleci.com/gh/noosenergy/noos-kube-proxy.svg?style=svg&circle-token=798a263cee229742a5a286732ff613c17d16e175)](https://circleci.com/gh/noosenergy/noos-kube-proxy)
 
-# Neptune Kube Proxy
-Reverse proxy boilerplate for the Neptune platform.
+# Noos Kube Proxy
+Reverse proxy boilerplate for the Noos platform.
 
 This project regroups quite a few ideas gathered along blogs, threads, repositories and other documentations. To give back to the community, Noos Energy open-sourced the deployment of such a service to help other developpers to jump-start building their cloud-native infrastructure.
 
