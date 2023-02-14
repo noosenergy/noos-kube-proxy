@@ -25,9 +25,6 @@ providers:
 entryPoints:
   web:
     address: ":80"
-    forwardedHeaders:
-      # Trust X-Forwarded headers from AWS ELB
-      insecure: true
     http:
       middlewares:
         # Add custom headers to any requests/responses
