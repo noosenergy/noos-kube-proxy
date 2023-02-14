@@ -5,11 +5,23 @@ metadata:
   name: traefik-controller
   namespace: {{ .Release.Namespace }}
 ---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: traefik-controller
+subjects:
+  - kind: ServiceAccount
+    name: traefik-controller
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: traefik-controller
+---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: traefik-controller
-  namespace: {{ .Release.Namespace }}
 rules:
   - apiGroups: [""]
     resources: ["services", "endpoints", "secrets"]
@@ -32,18 +44,4 @@ rules:
       - traefikservices
       - serverstransports
     verbs: ["get", "list", "watch"]
----
-kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: traefik-controller
-  namespace: {{ .Release.Namespace }}
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: traefik-controller
-subjects:
-  - kind: ServiceAccount
-    name: traefik-controller
-    namespace: {{ .Release.Namespace }}
 {{- end }}

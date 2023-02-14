@@ -4,10 +4,6 @@ http:
   middlewares:
     gateway-header:
       headers:
-        # Enforce TLS for incoming requests (as terminated after AWS ELB)
-        customRequestHeaders:
-          X-Forwarded-Scheme: "https"
-          X-Scheme: "https"
         # Enforce security headers for outgoing responses
         # (https://observatory.mozilla.org/)
         browserXssFilter: true
