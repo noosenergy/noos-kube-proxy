@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/noosenergy/noos-kube-proxy.svg?style=svg&circle-token=798a263cee229742a5a286732ff613c17d16e175)](https://circleci.com/gh/noosenergy/noos-kube-proxy)
+[![CircleCI](https://circleci.com/gh/noosenergy/noos-kube-proxy.svg?style=svg&circle-token=a643f6ec7cebea19447e55916d361b1d9775f2c0)](https://circleci.com/gh/noosenergy/noos-kube-proxy)
 
 # Noos Kube Proxy
 Reverse proxy boilerplate for the Noos platform.
