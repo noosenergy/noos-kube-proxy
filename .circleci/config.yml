@@ -2,7 +2,7 @@
 version: 2.1
 
 default:
-  filter: &filter-master-only
+  filter: &filter_master_only
     filters:
       branches:
         only: master
@@ -14,7 +14,7 @@ default:
 
 orbs:
 
-  noos-ci: noosenergy/noos-ci@0.1.15
+  noos-ci: noosenergy/noos-ci@0.1.17
 
 
 # --------------
@@ -23,27 +23,27 @@ orbs:
 
 jobs:
 
-  lint-chart:
+  lint_chart:
     executor: noos-ci/default
     steps:
       - checkout
-      - noos-ci/helm-lint-chart
+      - noos-ci/helm_lint_chart
 
-  build-chart:
+  build_chart:
     executor: noos-ci/default
     steps:
       - checkout
-      - noos-ci/helm-build-chart:
-          registry-provider: aws
-          chart-name: noos-prod/kube-proxy
+      - noos-ci/helm_build_chart:
+          registry_provider: aws
+          chart_name: noos-prod/kube-proxy
 
   deploy:
     executor: noos-ci/default
     steps:
       - checkout
-      - noos-ci/terraform-run-plan:
+      - noos-ci/terraform_run_plan:
           workspace: noos-prod
-          plan-message: ${CIRCLE_BUILD_URL}
+          plan_message: ${CIRCLE_BUILD_URL}
 
 
 # -----------------
@@ -52,19 +52,19 @@ jobs:
 
 workflows:
 
-  lint-build-deploy:
+  lint_build_deploy:
     jobs:
-      - lint-chart
+      - lint_chart
       - hold:
           type: approval
-          <<: *filter-master-only
-      - build-chart:
+          <<: *filter_master_only
+      - build_chart:
           context: CIRCLECI_SHARED
           requires:
             - hold
-          <<: *filter-master-only
+          <<: *filter_master_only
       - deploy:
           context: NOOS_PROD_SHARED
           requires:
-            - build-chart
-          <<: *filter-master-only
+            - build_chart
+          <<: *filter_master_only
