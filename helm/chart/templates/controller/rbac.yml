@@ -8,7 +8,7 @@ metadata:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ .Values.controller.ingressClassName }}-controller
+  name: traefik-controller
 subjects:
   - kind: ServiceAccount
     name: traefik-controller
@@ -16,12 +16,12 @@ subjects:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ .Values.controller.ingressClassName }}-controller
+  name: traefik-controller
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ .Values.controller.ingressClassName }}-controller
+  name: traefik-controller
 rules:
   - apiGroups: [""]
     resources: ["services", "endpoints", "secrets"]
