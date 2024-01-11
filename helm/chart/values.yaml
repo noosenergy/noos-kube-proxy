@@ -14,7 +14,7 @@ controller:
   isDefaultIngressClass: true
   image:
     repository: traefik
-    tag: "v2.8"
+    tag: "v2.9.10"
     pullPolicy: Always
   service:
     annotations: {}
