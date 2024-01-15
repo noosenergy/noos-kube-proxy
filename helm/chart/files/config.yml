@@ -3,6 +3,7 @@
 
 log:
   level: WARNING
+  format: json
 
 accessLog: {}
 
