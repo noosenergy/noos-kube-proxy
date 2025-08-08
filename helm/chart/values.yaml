@@ -1,10 +1,10 @@
-# v2.10 resources:
+# v2.11 resources:
 #     - Traefik config
-#     https://doc.traefik.io/traefik/v2.10/
+#     https://doc.traefik.io/traefik/v2.11/
 #     - Helm chart
 #     https://github.com/traefik/traefik-helm-chart/tree/master/traefik
 #     - CRDs / ingresses
-#     https://github.com/traefik/traefik/tree/v2.10/pkg/provider/kubernetes/ingress/fixtures
+#     https://github.com/traefik/traefik/tree/v2.11/pkg/provider/kubernetes/ingress/fixtures
 rbac:
   enabled: true
 
@@ -14,7 +14,7 @@ controller:
   isDefaultIngressClass: true
   image:
     repository: traefik
-    tag: "v2.10"
+    tag: "v2.11.28"
     pullPolicy: Always
   service:
     annotations: {}
