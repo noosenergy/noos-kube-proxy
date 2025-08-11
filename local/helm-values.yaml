@@ -12,7 +12,7 @@ controller:
   isDefaultIngressClass: true
   image:
     repository: traefik
-    tag: "v3.0.0"
+    tag: "v3.5.0"
     pullPolicy: Always
   resources:
     requests:
