@@ -24,8 +24,14 @@ metadata:
   name: traefik-controller
 rules:
   - apiGroups: [""]
-    resources: ["services", "endpoints", "secrets"]
+    resources: ["configmaps", "nodes", "services" , "secrets"]
     verbs: ["get", "list", "watch"]
+  - apiGroups: ["discovery.k8s.io"]
+    resources: ["endpointslices"]
+    verbs: ["list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get"]
   - apiGroups: ["extensions", "networking.k8s.io"]
     resources: ["ingresses", "ingressclasses"]
     verbs: ["get", "list", "watch"]
@@ -39,10 +45,10 @@ rules:
       - ingressrouteudps
       - middlewares
       - middlewaretcps
+      - serverstransports
+      - serverstransporttcps
       - tlsoptions
       - tlsstores
       - traefikservices
-      - serverstransports
-      - serverstransporttcps
     verbs: ["get", "list", "watch"]
 {{- end }}
