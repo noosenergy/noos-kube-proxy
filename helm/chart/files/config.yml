@@ -1,8 +1,5 @@
 # Traefik static configuration
 # https://doc.traefik.io/traefik/
-core:
-  defaultRuleSyntax: v2
-
 log:
   level: WARN
   format: json
