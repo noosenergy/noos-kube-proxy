@@ -9,9 +9,10 @@ rbac:
 controller:
   priorityClassName: system-cluster-critical
   ingressClassName: traefik
+  isDefaultIngressClass: true
   image:
     repository: traefik
-    tag: "v2.10"
+    tag: "v3.0.0"
     pullPolicy: Always
   resources:
     requests:
