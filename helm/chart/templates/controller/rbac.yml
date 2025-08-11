@@ -32,7 +32,7 @@ rules:
   - apiGroups: ["extensions", "networking.k8s.io"]
     resources: ["ingresses/status"]
     verbs: ["update"]
-  - apiGroups: ["traefik.io", "traefik.containo.us"]
+  - apiGroups: ["traefik.io"]
     resources:
       - ingressroutes
       - ingressroutetcps
