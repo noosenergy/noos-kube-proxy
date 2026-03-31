@@ -9,9 +9,13 @@ rbac:
   enabled: true
 
 controller:
-  priorityClassName:
+  # Whether to enforce TLS by redirecting HTTP to HTTPS
+  enforceTLS: true
+  # Set Traefik as the cluster default reverse proxy
   ingressClassName: traefik
   isDefaultIngressClass: true
+  # Overall deployment
+  priorityClassName:
   image:
     repository: traefik
     tag: "v3.5.0"

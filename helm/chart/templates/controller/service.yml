@@ -13,9 +13,11 @@ spec:
   ports:
     - name: http
       port: 80
+    {{- if .Values.controller.enforceTLS }}
       targetPort: tohttps
     - name: https
       port: 443
+    {{- end }}
       targetPort: http
 ---
 apiVersion: v1

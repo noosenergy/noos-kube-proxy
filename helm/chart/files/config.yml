@@ -1,5 +1,4 @@
 # Traefik static configuration
-# https://doc.traefik.io/traefik/
 log:
   level: WARN
   format: json
@@ -8,9 +7,11 @@ accessLog: {}
 
 # Provider type
 providers:
+  {{- if .Values.controller.enforceTLS }}
   file:
     filename: "/etc/traefik/rules.yml"
     watch: true
+  {{- end }}
   kubernetesCRD:
     # Allow middlewares to be accessed between namespaces
     allowCrossNamespace: true
@@ -25,6 +26,7 @@ providers:
 entryPoints:
   web:
     address: ":80"
+  {{- if .Values.controller.enforceTLS }}
     http:
       middlewares:
         # Add custom headers to any requests/responses
@@ -37,6 +39,7 @@ entryPoints:
           to: ":443"
           scheme: "https"
           permanent: true
+  {{- end }}
 
 # Api entrypoint
 api:

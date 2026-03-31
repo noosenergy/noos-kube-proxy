@@ -1,5 +1,5 @@
 # Traefik dynamic configuration
-
+{{- if .Values.controller.enforceTLS -}}
 http:
   middlewares:
     gateway-header:
@@ -14,3 +14,4 @@ http:
         forceSTSHeader: true
         stsSeconds: 3600
         stsIncludeSubdomains: true
+{{- end }}

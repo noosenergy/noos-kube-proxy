@@ -1,12 +1,9 @@
-# To point shell to minikube's docker-daemon:
-# `eval $(minikube docker-env)`
-# To revert:
-# `eval $(minikube docker-env --unset)`
-
+---
 rbac:
   enabled: true
 
 controller:
+  enforceTLS: false
   priorityClassName: system-cluster-critical
   ingressClassName: traefik
   isDefaultIngressClass: true

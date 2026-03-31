@@ -41,8 +41,10 @@ spec:
           ports:
             - name: http
               containerPort: 80
+            {{- if .Values.controller.enforceTLS }}
             - name: tohttps
               containerPort: 2443
+            {{- end }}
             - name: api
               containerPort: 8080
           volumeMounts:
