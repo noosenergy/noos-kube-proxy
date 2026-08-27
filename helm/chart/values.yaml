@@ -9,6 +9,7 @@ rbac:
   enabled: false
 
 controller:
+  deployTag: latest
   # Whether to enforce TLS by redirecting HTTP to HTTPS
   enforceTLS: false
   # Set Traefik as the cluster default reverse proxy
