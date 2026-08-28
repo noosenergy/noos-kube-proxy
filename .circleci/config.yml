@@ -39,6 +39,10 @@ jobs:
     executor: noos-ci/default
     steps:
       - checkout
+      - noos-ci/terraform_update_variable:
+          workspace: noos-prod
+          variable_name: kube_proxy_controller_deploy_tag
+          variable_value: ${CIRCLE_SHA1}
       - noos-ci/terraform_run_plan:
           workspace: noos-prod
           plan_message: ${CIRCLE_BUILD_URL}
