@@ -3,14 +3,8 @@ rbac:
   enabled: true
 
 controller:
+  # Https to Http permanent redirect not required for local clusters
   enforceTLS: false
-  priorityClassName: system-cluster-critical
-  ingressClassName: traefik
-  isDefaultIngressClass: true
-  image:
-    repository: traefik
-    tag: "v3.5.0"
-    pullPolicy: Always
   resources:
     requests:
       cpu: 1m

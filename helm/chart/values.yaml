@@ -1,24 +1,25 @@
-# v3.5 resources:
+# v3.6 resources:
 #     - Traefik config
-#     https://doc.traefik.io/traefik/v3.5/
+#     https://doc.traefik.io/traefik/v3.6/
 #     - Helm chart
 #     https://github.com/traefik/traefik-helm-chart/tree/master/traefik
 #     - CRDs / ingresses
-#     https://github.com/traefik/traefik/tree/v3.5/pkg/provider/kubernetes/ingress/fixtures
+#     https://github.com/traefik/traefik/tree/v3.6/pkg/provider/kubernetes/ingress/fixtures
 rbac:
   enabled: false
 
 controller:
+  deployTag: latest
   # Whether to enforce TLS by redirecting HTTP to HTTPS
   enforceTLS: false
   # Set Traefik as the cluster default reverse proxy
   ingressClassName: traefik
-  isDefaultIngressClass: false
+  isDefaultIngressClass: true
   # Overall deployment
   priorityClassName:
   image:
     repository: traefik
-    tag: "v3.5.0"
+    tag: "v3.6.25"
     pullPolicy: Always
   service:
     annotations: {}
