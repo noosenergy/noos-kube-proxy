@@ -1,10 +1,10 @@
-# v3.6 resources:
+# v3.7 resources:
 #     - Traefik config
-#     https://doc.traefik.io/traefik/v3.6/
+#     https://doc.traefik.io/traefik/v3.7/
 #     - Helm chart
 #     https://github.com/traefik/traefik-helm-chart/tree/master/traefik
 #     - CRDs / ingresses
-#     https://github.com/traefik/traefik/tree/v3.6/pkg/provider/kubernetes/ingress/fixtures
+#     https://github.com/traefik/traefik/tree/v3.7/pkg/provider/kubernetes/ingress/fixtures
 rbac:
   enabled: false
 
@@ -19,7 +19,7 @@ controller:
   priorityClassName:
   image:
     repository: traefik
-    tag: "v3.6.25"
+    tag: "v3.7.12"
     pullPolicy: Always
   service:
     annotations: {}
