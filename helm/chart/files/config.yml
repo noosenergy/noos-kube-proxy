@@ -26,14 +26,22 @@ providers:
 entryPoints:
   web:
     address: ":80"
-  {{- if .Values.controller.enforceTLS }}
     http:
+      # Ensure the request path is sanitized before routing
+      sanitizePath: true
+      # Strip headers aliasing an injected header name (e.g. X-Scheme) to prevent spoofing
+      aliasHeadersStrategy: delete
+  {{- if .Values.controller.enforceTLS }}
       middlewares:
         # Add custom headers to any requests/responses
         - gateway-header@file
+    forwardedHeaders:
+      # Trust no upstream for X-Forwarded-*, AWS NLB is L4 (so no added headers)
+      trustedIPs: []
   webredirect:
     address: ":2443"
     http:
+      aliasHeadersStrategy: delete
       redirections:
         entryPoint:
           to: ":443"
