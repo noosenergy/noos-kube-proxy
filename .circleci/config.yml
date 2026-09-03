@@ -7,14 +7,12 @@ filters:
       branches:
         only: master
 
-
 # ----------------
 # Orbs declaration
 # ----------------
 
 orbs:
-  noos-ci: noosenergy/noos-ci@0.5.0
-
+  noos-ci: noosenergy/noos-ci@0.5.1
 
 # --------------
 # Pipeline tasks
@@ -46,7 +44,6 @@ jobs:
       - noos-ci/terraform_run_plan:
           workspace: noos-prod
           plan_message: ${CIRCLE_BUILD_URL}
-
 
 # -----------------
 # Pipeline workflow
